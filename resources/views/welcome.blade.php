@@ -2,16 +2,11 @@
 
 @section('body')
 
-<style>
-  #map{
-    height: 450px;
-  }
-</style>
 <div style="overflow: hidden;">
 	
 <div class="row">
 	
- <div id="map" class="col-md-6" style="margin-top: 10px; display: inline-block;"> 
+ <div id="map" class="col-md-6" style="height: 450px; margin-top: 10px; display: inline-block;"> 
 
 </div>
 
