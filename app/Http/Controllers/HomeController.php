@@ -16,23 +16,23 @@ class HomeController extends Controller
     }
 
 
+    public function feedFilter(Request $request){
+		
+		$arr=[];
+		foreach ($request->feed as $oneFeed) {
+			$string  = explode('message: ', $oneFeed['content']['$t'])[1];
+		
+			$message = explode(', sentiment: ', $string)[0];
+			$sentiment = explode(', sentiment: ', $string)[1];
+			$icon = asset('images/'.$sentiment.'.png');
+			$date  = $oneFeed['title']['$t'];
 
+			$arr[]  = ['message' => $message, 'sentiment'=>$sentiment, 'icon'=>$icon, 'date'=>$date];
+			
+		}
+			// return $arr;
 
-    public function filter($res){
-
-            $string = $res;
-
-		list($a, $b) = explode(', sentiment: ', $string);
-
-		  $sentiment = $b; // "5"
-
-		$pieces = explode(' ', $a);
-		 $city = array_pop($pieces);
-
-		 $icon = asset('images/'.$sentiment.'.png');
-
-		return [$sentiment, $city, $icon];
-
+			return response()->json(['success'=> true, 'filteredFeeds' => $arr]);
 
     }
 

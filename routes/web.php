@@ -16,4 +16,6 @@
   	return view('welcome');
   });
 
-Route::get('/filter/{res}', 'HomeController@filter');
+// Route::get('/filter/{res}', 'HomeController@filter');
+
+Route::post('/filter', 'HomeController@feedFilter')->name('feed.filter');
